@@ -39,7 +39,7 @@ export default function Home() {
   ];
 
  // Envuelve fetchSpinHistory en useCallback
-  const fetchSpinHistory = useCallback(async (currentUserId) => {
+  const fetchSpinHistory = useCallback(async (currentUserId: string) => {
       if (currentUserId) {
           try {
               const response = await axios.get(`${backendUrl}/user/${currentUserId}/spin-history`);
