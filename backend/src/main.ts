@@ -6,7 +6,7 @@ async function bootstrap() {
 
   // Configuración de CORS para permitir que el frontend hable con el backend
    app.enableCors({
-     origin: 'https://rueda-fortuna-nest-js-next-js-santiagourdanetas-projects.vercel.app/', // ¡Permite que tu frontend hable con este backend!
+     origin: 'https://rueda-fortuna-nest-js-next-js-santiagourdanetas-projects.vercel.app', // ¡Permite que tu frontend hable con este backend!
      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Qué tipo de peticiones se permiten
      credentials: true, // Si usaras cookies o sesiones, esto sería importante
    });
