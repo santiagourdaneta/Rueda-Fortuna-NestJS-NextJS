@@ -1,0 +1,23 @@
+# Ignorar carpetas de módulos
+node_modules/
+
+# Frontend (Next.js)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# Backend (NestJS)
+backend/node_modules/
+backend/dist/
+backend/.env # Si usas variables de entorno, no las subas
+backend/*.tsbuildinfo
+backend/prisma/dev.db # Tu archivo de base de datos SQLite (o cualquier *.db si usas otro nombre)
+backend/prisma/*.sqlite
+
+# Archivos de configuración y logs temporales
+*.env
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# .vscode/ # Descomentar si no quieres compartir configuraciones de VS Code específicas

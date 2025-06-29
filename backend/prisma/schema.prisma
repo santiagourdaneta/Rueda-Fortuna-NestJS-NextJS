@@ -1,0 +1,37 @@
+// Esto le dice a Prisma que use SQLite (un cuaderno local)
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL") // Aquí estará la ruta a nuestro archivo de base de datos
+}
+
+// Esto le dice a Prisma que genere el código para que NestJS hable con la base de datos
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Un modelo para guardar información de nuestros usuarios (quiénes juegan)
+model User {
+  id        String     @id @default(uuid()) // Un ID único para cada usuario
+  email     String     @unique // El correo electrónico del usuario (no puede haber dos iguales)
+  password  String // La clave secreta del usuario (¡la guardaremos segura!)
+  createdAt DateTime @default(now()) // Cuándo se creó este usuario
+  updatedAt DateTime @updatedAt // Cuándo se actualizó por última vez
+  balance   Float      @default(0.0) // El dinero simulado que tiene el usuario
+
+  // Relación con los intentos de giro (un usuario puede tener muchos intentos)
+  spinAttempts SpinAttempt[]
+}
+
+// Un modelo para guardar cada vez que alguien gira la rueda
+model SpinAttempt {
+  id        String   @id @default(uuid()) // Un ID único para cada intento
+  userId    String // El ID del usuario que hizo el giro
+  spinDate  DateTime @default(now()) // Cuándo se hizo el giro
+  prize     String // Qué premio ganó (ej. "100 SOLES", "PERDISTE")
+  isPaid    Boolean  @default(false) // Si este intento fue pagado (ahora simulado)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relación con el usuario (un intento pertenece a un usuario)
+  user      User     @relation(fields: [userId], references: [id])
+}
