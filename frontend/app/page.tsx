@@ -38,7 +38,9 @@ export default function Home() {
   const [spinHistory, setSpinHistory] = useState<SpinAttempt[]>([]);
   // --- Fin del cambio ---
   // La URL base de nuestro backend (la "Caja Fuerte").
-  const backendUrl = 'http://localhost:3000';
+  //const backendUrl = 'http://localhost:3000';
+const backendUrl = 'https://rueda-fortuna-nestjs-nextjs.onrender.com';
+  
 
   // `prizes` define la información de cada segmento de la rueda:
   // Su nombre, color y el ángulo final en el círculo si lo dividimos en 4 segmentos de 90 grados.
