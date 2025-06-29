@@ -4,7 +4,7 @@
 import { Button, Typography, Box, Container } from '@mui/material';
 // Importamos hooks de React: useRef para referenciar elementos, useState para manejar el estado
 // y useEffect para ejecutar código al cargar o actualizar la página.
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback  } from 'react';
 // Importamos GSAP, nuestra potente librería para animaciones fluidas
 import { gsap } from 'gsap';
 // Importamos Axios, el "cartero" que nos ayuda a enviar y recibir mensajes del backend
