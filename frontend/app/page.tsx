@@ -298,8 +298,8 @@ export default function Home() {
 
         try {
             const spinResponse = await axios.post(`${backendUrl}/user/spin`, { userId });
-            const { prize, newBalance, message: backendMessage } = spinResponse.data; // Renombramos 'message' para evitar conflicto
-
+            const { newBalance, message: backendMessage } = spinResponse.data; // Renombramos 'message' para evitar conflicto
+            
             if (backendMessage.includes('Saldo insuficiente')) {
                 setMessage(backendMessage); // Muestra el mensaje de saldo insuficiente del backend
                 setBalance(newBalance);
