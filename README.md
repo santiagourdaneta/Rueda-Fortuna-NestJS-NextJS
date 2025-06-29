@@ -1,6 +1,8 @@
 # Rueda-Fortuna-NestJS-NextJS
 Juego interactivo de la Rueda de la Fortuna con frontend en Next.js (React/Material-UI) y backend en NestJS (Node.js/Prisma/SQLite) con gestión de saldos y premios.
 
+Demo: https://rueda-fortuna-nest-js-next-js-santiagourdanetas-projects.vercel.app/  
+
 # 🎰 Rueda de la Fortuna Interactiva - Juego Web (Next.js & NestJS)
 
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
