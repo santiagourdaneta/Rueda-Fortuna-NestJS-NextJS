@@ -38,18 +38,18 @@ export default function Home() {
     { name: '🔄 OTRA VEZ 🔄', color: '#FF6347', endAngle: 360 }     // De 270 a 360 grados
   ];
 
- const fetchSpinHistory = async () => {
-          if (userId) { // Solo si ya tenemos un userId
-              try {
-                  const response = await axios.get(`${backendUrl}/user/${userId}/spin-history`);
-                  setSpinHistory(response.data);
-                  console.log('Historial de giros cargado:', response.data);
-              } catch (error) {
-                  console.error('Error al cargar historial de giros:', error);
-                  // Podrías poner un mensaje aquí si falla la carga del historial
-              }
+ // Envuelve fetchSpinHistory en useCallback
+  const fetchSpinHistory = useCallback(async (currentUserId) => {
+      if (currentUserId) {
+          try {
+              const response = await axios.get(`${backendUrl}/user/${currentUserId}/spin-history`);
+              setSpinHistory(response.data);
+              console.log('Historial de giros cargado:', response.data);
+          } catch (error) {
+              console.error('Error al cargar historial de giros:', error);
           }
-      };
+      }
+  }, [backendUrl, setSpinHistory]); // Dependencias de fetchSpinHistory
      
   // `useEffect` se ejecuta una vez al cargar la página (debido al array vacío `[]`).
   // Su propósito es obtener el ID y balance del usuario de prueba desde el backend.
@@ -78,8 +78,7 @@ export default function Home() {
     }
     };
     fetchUser(); // Llamamos a la función para cargar el usuario
-  }, []); // El array vacío asegura que esto solo se ejecute una vez al montar el componente
-
+  }, [backendUrl, fetchSpinHistory, setBalance, setMessage, setIsLoading, setUserId]); // Agrega fetchSpinHistory y otras dependencias aquí
 
      
  
