@@ -10,6 +10,16 @@ import { gsap } from 'gsap';
 // Importamos Axios, el "cartero" que nos ayuda a enviar y recibir mensajes del backend
 import axios from 'axios';
 
+// --- ¡Añade esta interfaz! ---
+interface SpinAttempt {
+  id: string; // O number, si tu ID es un número en Prisma
+  userId: string;
+  prize: string;
+  spinDate: string; // Viene como string, puedes convertirlo a Date si necesitas más manipulación
+  isPaid: boolean;
+}
+// --- Fin de la interfaz ---
+
 // La función principal de nuestra página, lo que el jugador verá en su navegador
 export default function Home() {
   // `wheelRef` es una referencia a la caja que contiene los segmentos de la rueda,
@@ -24,7 +34,9 @@ export default function Home() {
   const [message, setMessage] = useState(''); // Estado para el mensaje dinámico
   const [isLoading, setIsLoading] = useState(false); // Estado para el indicador de carga
 
-  const [spinHistory, setSpinHistory] = useState([]); // Estado para el historial de giros
+   // --- ¡Usa el tipo SpinAttempt[] para spinHistory! ---
+  const [spinHistory, setSpinHistory] = useState<SpinAttempt[]>([]);
+  // --- Fin del cambio ---
   // La URL base de nuestro backend (la "Caja Fuerte").
   const backendUrl = 'http://localhost:3000';
 
